@@ -4,7 +4,14 @@
         <meta charset="UTF-8">
         <title>Curso PHP FUNDAMENTAL</title>
     </head>
-    <h1>Teste</h1>
     <body>
+
+    <!-- COMENTÁRIO -->
+     
+    <?php 
+        // COMENTÁRIO PHP
+        echo "Pedro André"; 
+    ?>
+
     </body>
 </html>

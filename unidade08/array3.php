@@ -1,5 +1,5 @@
 <?php
-    $_salada = array["Laranja","Uva","Abacate"];
+    $_salada = array("Laranja","Uva","Abacate");
 ?>
 
 <!doctype html>
@@ -11,8 +11,14 @@
 
     <body>
         <?php 
-            $_1telefone = "Matheus Fontenelle"; 
-            echo $_1telefone;
+            echo "O elemento 'Laranja' existe? ";
+            $resposta = in_array("UVA", $_salada);
+            echo ($resposta)?"Sim":"Não";
+            echo "<br>";
+
+            echo "O elemento 'Uva' existe em qual índice? ";
+            $resposta = array_search("Abacate", $_salada);
+            echo $resposta;
         ?>
     </body>
 </html>

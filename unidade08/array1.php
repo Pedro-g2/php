@@ -1,3 +1,7 @@
+<?php
+    $_salada = array("maçã", "abacaxi", "laranja");
+?>
+
 <!doctype html>
 <html>
     <head>
@@ -6,9 +10,20 @@
     </head>
 
     <body>
-        <?php 
-            $_1telefone = "Matheus Fontenelle"; 
-            echo $_1telefone;
+
+        <?php
+            
+            echo $_salada[0]."<br>";
+            $_salada[]="abacate";
+            echo count($_salada)."<br>";
         ?>
+
+        <pre>
+        <?php
+            
+            print_r($_salada);
+        ?>
+        </pre>
+
     </body>
 </html>

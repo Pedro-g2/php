@@ -1,5 +1,5 @@
 <?php
-
+    $numbers = array(14, 78, 25, 356, 12, 0, -7, 85);
 ?>
 
 <!doctype html>
@@ -10,9 +10,25 @@
     </head>
 
     <body>
+        <pre>
         <?php 
-            $_1telefone = "Matheus Fontenelle"; 
-            echo $_1telefone;
+            sort($numbers);
+            echo "Crescente<br>";
+            print_r($numbers);
+        ?>
+        </pre>
+
+        <pre>
+        <?php 
+            rsort($numbers);
+            echo "Decrescente<br>";
+            print_r($numbers);
+        ?>
+        </pre>
+
+        <?php
+            echo "Maior valor: ".max($numbers)."<br>";
+            echo "Menor valor: ".min($numbers)."<br>";
         ?>
     </body>
 </html>

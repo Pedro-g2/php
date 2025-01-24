@@ -9,7 +9,7 @@
     <!-- COMENTÁRIO -->
      
     <?php 
-        // COMENTÁRIO PHP
+        // COMENTÁRIO PHP 
         echo "Pedro André"; 
     ?>
 

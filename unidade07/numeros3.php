@@ -1,5 +1,5 @@
 <?php
-    $gasolina = 4.55;
+    $gasolina = 4.5;
 ?>
 
 <!doctype html>
@@ -14,13 +14,19 @@
         
         <?php
             // arredondar para media
-
+            echo "Arredondando para média: ";
+            echo round($gasolina);
+            echo "<br>";
 
             // arredondar para cima
-
+            echo "Arredondando para cima: ";
+            echo ceil($gasolina);
+            echo "<br>";
 
             // arredondar para baixo
-
+            echo "Arredondando para cima: ";
+            echo floor($gasolina);
+            echo "<br>";
 
             
         ?>

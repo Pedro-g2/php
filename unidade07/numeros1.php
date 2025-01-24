@@ -15,18 +15,19 @@
             // Multiplicacao e Divisao
 
             // Exponencial
-            echo "Raiz quadrada: " . pow(6,3) . "</br>";
+            echo "Exponenciação: " . pow(6,3) . "</br>";
 
             // Raiz Quadrada
+            echo "Raiz quadrada: " . sqrt(6) . "</br>";
 
-            // Randômico Generica
-            echo "Randomico: " . rand(1,5) . "</br>";
+            // Randômico aleatório
+            echo "Randômico aleatório: ".rand()."<br>";
 
-            // Randômico entre um intervalo
-            echo "Randomico no intervalo " . rand() . "</br>";
+            // Randômico no intervalo
+            echo "Randomico no intervalo: " . rand(1,5) . "</br>";
             
             // Valor absoluto
-            
+            echo "Valor absoluto: " . abs(-45) . "</br>";
         ?>
     </body>
 </html>

@@ -41,11 +41,11 @@
               <form action="valida_login.php" method="post">
                 <div class="form-group">
                   <input name="email" type="email" class="form-control" placeholder="E-mail">
-                  <span name="erro_email"><?php echo ($erro_email == "erro")? "E-mail inválido":""; ?></span>
+                  <span name="erro_email" class="text-danger"><?php echo ($erro_email == "erro")? "E-mail inválido":""; ?></span>
                 </div>
                 <div class="form-group">
                   <input name="password" type="password" class="form-control" placeholder="Senha">
-                  <span name="erro_senha"><?php echo ($erro_senha == "erro")? "Senha inválida":""; ?></span>
+                  <span name="erro_senha" class="text-danger"><?php echo ($erro_senha == "erro")? "Senha inválida":""; ?></span>
                 </div>
                 <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
               </form>

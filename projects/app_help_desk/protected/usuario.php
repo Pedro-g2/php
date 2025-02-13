@@ -10,9 +10,9 @@
         public function __construct($nome, $email, $senha, $perfil_id)
         {
             $this->nome = $nome;
-            $this->nome = $email;
-            $this->nome = $senha;
-            $this->nome = $perfil_id;
+            $this->email = $email;
+            $this->senha = $senha;
+            $this->perfil_id = $perfil_id;
         }
 
         public function __get($attr) {

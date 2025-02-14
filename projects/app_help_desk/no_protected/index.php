@@ -1,14 +1,9 @@
 <?php
 
     include "../protected/usuario.php";
-
-    $usr01 = new Usuario("Pedro", "pedro@email.com", "123", 1);
-
-    echo $usr01->__get('nome');
-
 ?>
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,6 +11,32 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form name="user" action="" method="post">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" maxlength="30" size="30" required><br><br>
+        <label for="email">E-mail</label>
+        <input type="text" name="email" id="email" maxlength="14" size="14" required><br><br>
+        <label for="senha">Senha</label>
+        <input type="text" name="senha" id="senha" maxlength="5" size="5" required><br><br>
+        <button type="submit" name="cadastrar">Cadastrar</button>
+    </form>
+
+    <br>
+
+    <form name="sel" action="" method="post">
+        <label for="id">ID: </label>
+        <input type="text" name="id" id="id" maxlength="5" size="5" required><br><br>
+        <button type="submit" name="selecionar">Selecionar</button>
+    </form>
+
+<?php
+
+   $user = new Usuario();
+
+   $user->save_user();
+//    $user->search_user();
+//    print_r($user);
+?>
+
 </body>
-</html> -->
+</html>

@@ -5,14 +5,14 @@
         private $nome;
         private $email;
         private $senha;
-        private $perfil_id;
+        private $id_perfil;
 
-        public function __construct($nome='NULL', $email='NULL', $senha='NULL', $perfil_id=-1)
+        public function __construct($nome='NULL', $email='NULL', $senha='NULL', $id_perfil=-1)
         {
             $this->nome = $nome;
             $this->email = $email;
             $this->senha = $senha;
-            $this->perfil_id = $perfil_id;
+            $this->id_perfil = $id_perfil;
         }
 
         public function __get($attr) {
@@ -41,30 +41,27 @@
                 
                 mysqli_query($link, $insert);
                 mysqli_close($link);
-            } else {
-                echo 'Erro';
             }
         }
 
-        // CRIA UM USUÁRIO A PARTIR DO BANCO DE DADOS
-        public function search_user() {
+        // CRIA UM USUÁRIO A PARTIR DE UM SELECT NO BANCO DE DADOS
+        public function search_user($email) {
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 require_once "../protected/conexao.php";
 
-                $select = "select * from usuarios where id = " . $id;
+                $select = "select * from usuarios where email = " . "'" . $email. "'";
                 $resultado = mysqli_query($link, $select);
                 $registro = mysqli_fetch_assoc($resultado);
                 mysqli_close($link);
+
+                if(!$registro)
+                    return;
 
                 $this->__set('id', $registro['id']);
                 $this->__set('nome', $registro['nome']);
                 $this->__set('email', $registro['email']);
                 $this->__set('senha', $registro['senha']);
-                $this->__set('perfil_id', $registro['perfil_id']);
-
-            } else {
-                echo "Erro";
-            }
-
+                $this->__set('id_perfil', $registro['id_perfil']);
+            } 
         }
     }

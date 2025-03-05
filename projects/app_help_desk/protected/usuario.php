@@ -1,5 +1,5 @@
 <?php
-
+    
     class Usuario {
         private $id;
         private $nome;
@@ -26,7 +26,7 @@
         // INSERE UM USUÁRIO NO BANCO DE DADOS
         public function save_user() {
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                require_once "../protected/conexao.php";
+                include "../protected/conexao.php";
         
                 if(isset($_POST['nome']))
                     $this->__set('nome', $_POST['nome']);
@@ -47,7 +47,7 @@
         // CRIA UM USUÁRIO A PARTIR DE UM SELECT NO BANCO DE DADOS
         public function search_user($email) {
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                require_once "../protected/conexao.php";
+                include "../protected/conexao.php";
 
                 $select = "select * from usuarios where email = " . "'" . $email. "'";
                 $resultado = mysqli_query($link, $select);
@@ -64,4 +64,19 @@
                 $this->__set('id_perfil', $registro['id_perfil']);
             } 
         }
+
+        // LISTA TODOS OS USUÁRIOS CADASTRADOS NO BANCO DE DADOS
+        public function select_all() {
+            include "conexao.php";
+            $select = 'select * from usuarios';
+            $resultado = mysqli_query($link, $select);
+            mysqli_close($link);
+     
+            while($res = mysqli_fetch_assoc($resultado)) {
+                echo '<pre>';
+                    print_r($res);
+                echo '<pre>';
+            }
+        }
+
     }

@@ -1,6 +1,7 @@
 <?php
 
     include "../protected/usuario.php";
+    include "../protected/conexao.php";
 ?>
 
 <!DOCTYPE html>
@@ -29,12 +30,11 @@
             return;
         $email = $_POST['email'];
         $user->search_user($email);
-       }
 
-       echo "<pre>";
-       print_r($user);
-       echo "<pre>";
-    
+        echo '<pre>';
+            print_r($user);
+        echo '<pre>';
+       }
 ?>
 
 </body>

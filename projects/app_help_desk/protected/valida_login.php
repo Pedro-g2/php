@@ -12,8 +12,8 @@
         if(isset($_POST['password']))
             $password = $_POST['password'];
 
-        $bd_usuario = new BancoDeDados('select * from usuarios where email = '."'$login'");
-        $resultado = $bd_usuario->consultar();
+        $bd_usuario = new BancoDeDados();
+        $resultado = $bd_usuario->consultar_assoc("select * from usuarios where email = '$login'");
 
         $id = null;
         $email = null;

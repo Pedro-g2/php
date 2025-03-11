@@ -49,6 +49,5 @@
     </form>
 
     <a href="./cadastro.php">Inserir Usuário</a> <br>
-    <a href="./select.php">Selecionar Usuário</a>
 </body>
 </html>

@@ -1,7 +1,6 @@
 <?php
 
     include "../protected/classes.php";
-    include "../protected/conexao.php";
 ?>
 
 <!DOCTYPE html>
@@ -26,25 +25,23 @@
 
 <?php
 
-    $user = new Usuario();
-    if(isset($_POST['nome']))
-        $user->__set('nome', $_POST['nome']);
-    if(isset($_POST['email']))
-        $user->__set('email', $_POST['email']);
-    if(isset($_POST['senha']))
-        $user->__set('senha', $_POST['senha']);
+    $bd = new BancoDeDados();
+    $conect = new Conexao();
 
-    $bd = new BancoDeDados("insert into usuarios(nome, email, senha, id_perfil) 
-                        values('" . $user->__get('nome') . "', '" . $user->__get('email') . 
-                        "', '" . $user->__get('senha') . "', " . 2 . ")");
+    if(isset($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+        $nome = $_POST['nome'];
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
 
-    // $user_email = $user->__get("email");
-    // echo "select * usuarios where email=" . "'";
-    // $bd = new BancoDeDados("select * usuarios where email=" . "'" . $user_email . "'");
-    
-    // $result = $bd->consultar();
-
-    // if(isset($result)) echo 'Usuário cadastrado com sucesso!';
+        $consult_bd = $bd->consultar("select id from usuarios where email='$email'");
+        if(mysqli_num_rows($consult_bd) > 0) {
+            echo "Este e-mail já está cadastrado!";
+            exit;
+        }else {
+            $bd->inserir("insert into usuarios(nome, email, senha, id_perfil) values('$nome', '$email', '$senha', 2);");
+            echo 'Usuário cadastrado com sucesso!';
+        }
+    }
 
 ?>
 

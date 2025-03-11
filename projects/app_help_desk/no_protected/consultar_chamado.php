@@ -1,6 +1,6 @@
 <?php
 
-    include "../protected/conexao.php";
+    include "../protected/classes.php";
     require_once '../protected/valida_acesso.php';
 ?>
 
@@ -17,11 +17,11 @@
 
 <?php
 
+    $bd = new Conexao();
     $id_usuario = $_SESSION['id_usuario'];
 
     $select = 'select * from chamados where id_usuario=' . $id_usuario;
-    $result = mysqli_query($link, $select);
-    mysqli_close($link);
+    $result = mysqli_query($bd->getConexao(), $select);
 
     while($registro = mysqli_fetch_assoc($result)) {
         echo 'Id do chamado: ' . $registro['id_chamado'] . '</br>';

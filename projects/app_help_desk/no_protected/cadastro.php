@@ -1,6 +1,6 @@
 <?php
 
-    include "../protected/usuario.php";
+    include "../protected/classes.php";
     include "../protected/conexao.php";
 ?>
 
@@ -27,13 +27,24 @@
 <?php
 
     $user = new Usuario();
-    $user->save_user();
+    if(isset($_POST['nome']))
+        $user->__set('nome', $_POST['nome']);
+    if(isset($_POST['email']))
+        $user->__set('email', $_POST['email']);
+    if(isset($_POST['senha']))
+        $user->__set('senha', $_POST['senha']);
 
-    $user_email = $user->__get("email");
-    $select_user = 'select * from usuarios where email = '."'$user_email'";
-    $result = mysqli_query($link, $select_user);
+    $bd = new BancoDeDados("insert into usuarios(nome, email, senha, id_perfil) 
+                        values('" . $user->__get('nome') . "', '" . $user->__get('email') . 
+                        "', '" . $user->__get('senha') . "', " . 2 . ")");
 
-    if(isset($result)) echo 'Usuário cadastrado com sucesso!';
+    // $user_email = $user->__get("email");
+    // echo "select * usuarios where email=" . "'";
+    // $bd = new BancoDeDados("select * usuarios where email=" . "'" . $user_email . "'");
+    
+    // $result = $bd->consultar();
+
+    // if(isset($result)) echo 'Usuário cadastrado com sucesso!';
 
 ?>
 

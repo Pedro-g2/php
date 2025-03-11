@@ -1,5 +1,8 @@
 <?php
 
+    require_once '../protected/valida_acesso.php';
+    require_once "../protected/classes.php"; 
+
 ?>
 
 <html>
@@ -15,7 +18,9 @@
 
     <a href="abrir_chamado.php"> Abrir chamado</a><br>
 
-    <a href="consultar_chamado.php">Consultara chamados</a><br>
+    <a href="consultar_chamado.php">Consultar chamados</a><br>
+
+    <a href="../protected/sair.php">Sair</a><br>
 
 </body>
 </html>

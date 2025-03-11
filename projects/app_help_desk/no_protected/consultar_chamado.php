@@ -1,6 +1,7 @@
 <?php
 
     include "../protected/conexao.php";
+    require_once '../protected/valida_acesso.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,18 +12,25 @@
 </head>
 <body>
 
-    <a href="./index.php">Voltar</a>
+    <a href="./home.php">Voltar</a><br>
+    <a href="../protected/sair.php">Sair</a><br>
 
 <?php
 
-    $select = 'select * from chamados';
+    $id_usuario = $_SESSION['id_usuario'];
+
+    $select = 'select * from chamados where id_usuario=' . $id_usuario;
     $result = mysqli_query($link, $select);
     mysqli_close($link);
 
     while($registro = mysqli_fetch_assoc($result)) {
-        echo '<pre>';
-        print_r($registro);
-        echo '</pre>';
+        echo 'Id do chamado: ' . $registro['id_chamado'] . '</br>';
+        echo 'Título: ' . $registro['titulo'] . '</br>';
+        echo 'Categoria: ' . $registro['categoria'] . '</br>';
+        echo 'Descrição: ' . $registro['descricao'] . '</br>';
+        echo 'Id do usuário: ' . $registro['id_usuario'];
+        echo '</br>';
+        echo '</br>';
     }
     
 ?>

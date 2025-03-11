@@ -1,5 +1,6 @@
 <?php
     require_once "../protected/registra_chamado.php";
+    require_once '../protected/valida_acesso.php';
 ?>
 
 <html>
@@ -30,6 +31,7 @@ Abertura de chamado <br><br>
     </form>
 
     <a href="home.php">Voltar</a> <br>
+    <a href="../protected/sair.php">Sair</a><br>
 
 </body>
 </html>

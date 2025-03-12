@@ -10,12 +10,23 @@
         $email = $_POST['email'];
         $senha = $_POST['senha'];
 
-        $consult_bd = $bd->consultar("select id from usuarios where email='$email'");
+        try {
+            $consult_bd = $bd->consultar("select id from usuarios where email='$email'");
+        } catch (Exception $e) {
+            gravaErro('/.log_erro.txt', $e);
+            echo 'Erro no banco de dados.';
+        }
+
         if(mysqli_num_rows($consult_bd) > 0) {
             header('Location: ../no_protected/cadastro.php?email=1');
             exit;
         }else {
-            $bd->inserir("insert into usuarios(nome, email, senha, id_perfil) values('$nome', '$email', '$senha', 2);");
+            try {
+                $bd->inserir("insert into usuarios(nome, email, senha, id_perfil) values('$nome', '$email', '$senha', 2);");
+            } catch (Exception $e) {
+                gravaErro('/.log_erro.txt', $e);
+                echo 'Erro no banco de dados.';
+            }
             header('Location: ../no_protected/cadastro.php?email=0');
         }
     }

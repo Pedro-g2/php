@@ -11,7 +11,13 @@
         $idUsuario = $_SESSION['id_usuario'];
 
         $select = "insert into chamados(titulo, categoria, descricao, id_usuario) values('$titulo', '$categoria', '$descricao', $idUsuario)";
-        $result = mysqli_query($bd->getConexao(), $select);
+        
+        try {
+            $result = mysqli_query($bd->getConexao(), $select);
+        } catch (Exception $e) {
+            gravaErro('/.log_erro.txt', $e);
+            echo 'Erro no banco de dados.';
+        }
 
         if(isset($result)) {
             header('Location: ../no_protected/abrir_chamado.php?sucesso=yes');

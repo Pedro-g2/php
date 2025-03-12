@@ -48,3 +48,10 @@
             $this->fecharConexao();
         }
     }
+
+    function gravaErro($caminho, $erro) {
+        $arquivo = fopen($caminho, 'a+');
+        if($arquivo) {
+            fwrite($arquivo, $erro);
+        }
+    }

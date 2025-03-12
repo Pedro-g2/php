@@ -13,7 +13,17 @@
             $password = $_POST['password'];
 
         $bd_usuario = new BancoDeDados();
-        $resultado = $bd_usuario->consultar_assoc("select * from usuarios where email = '$login'");
+        try {
+            $resultado = $bd_usuario->consultar_assoc("select * from usuarios where email = '$login'");
+        } catch (Exception $e) {
+            $caminho = '/.log_erro.txt';
+            $arquivo = fopen($caminho, 'a+');
+            if($arquivo) {
+                fwrite($arquivo, $e);
+            }
+            echo 'Erro no banco de dados.';
+        }
+        
 
         $id = null;
         $email = null;

@@ -1,6 +1,12 @@
 <?php
 
-    include "../protected/classes.php";
+    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $msg = null;
+        if(isset($_GET['email'])) {
+            if($_GET['email'] == 1)  $msg = 'E-mail já cadastrado';
+            else if($_GET['email'] == 0)  $msg = 'Cadastro realizado com sucesso';
+        } 
+    }
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +17,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form name="user" action="" method="post">
+    <form name="user" action="../protected/registra_cadastro.php" method="post">
         <label for="nome">Nome</label>
         <input type="text" name="nome" id="nome"  required><br><br>
         <label for="email">E-mail</label>
@@ -22,28 +28,9 @@
     </form>
 
     <a href="./index.php">Voltar</a>
-
-<?php
-
-    $bd = new BancoDeDados();
-    $conect = new Conexao();
-
-    if(isset($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST') {
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-
-        $consult_bd = $bd->consultar("select id from usuarios where email='$email'");
-        if(mysqli_num_rows($consult_bd) > 0) {
-            echo "Este e-mail já está cadastrado!";
-            exit;
-        }else {
-            $bd->inserir("insert into usuarios(nome, email, senha, id_perfil) values('$nome', '$email', '$senha', 2);");
-            echo 'Usuário cadastrado com sucesso!';
-        }
-    }
-
-?>
+    <span>
+        <?php echo  $msg; ?>
+    </span>
 
 </body>
 </html>
